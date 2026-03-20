@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ash Secure Chat</title>
+  <style>
+    body { font-family: Arial; background:#f2f2f2; }
+    #chat { display:none; }
+    #messages img { max-width:200px; display:block; }
+  </style>
+</head>
+<body>
+
+<h2>Asha Secure Chat</h2>
+
+<div id="login">
+  <input id="username" placeholder="Username"><br><br>
+  <input id="room" placeholder="Room Number"><br><br>
+  <button onclick="createRoom()">Create Room</button>
+  <button onclick="joinRoom()">Join Room</button>
+</div>
+
+<div id="chat">
+  <div id="messages"></div><br>
+  <input id="msg" placeholder="Message">
+  <input type="file" id="img">
+  <button onclick="send()">Send</button>
+</div>
+
+<div id="requests"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+  let roomId, username;
+
+  function createRoom() {
+    username = usernameInput();
+    roomId = roomInput();
+    socket.emit("createRoom", { username, room: roomId });
+  }
+
+  function joinRoom() {
+    username = usernameInput();
+    roomId = roomInput();
+    socket.emit("requestJoin", { username, room: roomId });
+  }
+
+  socket.on("joined", () => {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("chat").style.display = "block";
+  });
+
+  socket.on("joinRequest", ({ username, socketId }) => {
+    const btn = document.createElement("button");
+    btn.innerText = "Accept " + username;
+    btn.onclick = () => {
+      socket.emit("approveJoin", {
+        socketId,
+        room: roomId,
+        username
+      });
+      btn.remove();
+    };
+    document.getElementById("requests").appendChild(btn);
+  });
+
+  socket.on("message", ({ user, text }) => {
+    add(user + ": " + text);
+  });
+
+  socket.on("image", ({ user, image }) => {
+    const img = document.createElement("img");
+    img.src = image;
+    document.getElementById("messages").append(img);
+  });
+
+  function send() {
+    const text = document.getElementById("msg").value;
+    socket.emit("message", { room: roomId, user: username, text });
+
+    const file = document.getElementById("img").files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        socket.emit("image", {
+          room: roomId,
+          user: username,
+          image: reader.result
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+    document.getElementById("msg").value = "";
+  }
+
+  function add(t) {
+    const p = document.createElement("p");
+    p.innerText = t;
+    document.getElementById("messages").appendChild(p);
+  }
+
+  function usernameInput() {
+    return document.getElementById("username").value;
+  }
+  function roomInput() {
+    return document.getElementById("room").value;
+  }
+
+  socket.on("errorMsg", alert);
+</script>
+
+</body>
+</html>
+
+
+
