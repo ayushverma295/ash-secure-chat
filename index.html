@@ -18,26 +18,7 @@
     #chat { display:none; }
     #messages img { max-width:200px; display:block; }
 
-    .exit-btn{
- background:#ff4d4d;
- color:white;
- border:none;
- padding:8px 15px;
- border-radius:8px;
- cursor:pointer;
- font-weight:bold;
-}
-
-.exit-screen{
- height:100vh;
- display:flex;
- flex-direction:column;
- justify-content:center;
- align-items:center;
- background:#0f172a;
- color:white;
-}
-    
+ 
   </style>
 </head>
 <body>
@@ -56,8 +37,7 @@
   <input id="msg" placeholder="Message">
   <input type="file" id="img">
   <button onclick="send()">Send</button>
-  <button id="exitBtn" class="exit-btn">Exit Room</button>
-</div>
+ </div>
 
 <div id="requests"></div>
 
@@ -140,27 +120,12 @@
   }
 
   socket.on("errorMsg", alert);
-
-window.onload = function(){
-
-  document.getElementById("exitBtn").onclick = function () {
-
-     socket.emit("leaveRoom");
-
-     document.getElementById("chat").style.display="none";
-     document.getElementById("login").style.display="none";
-     document.getElementById("exitScreen").style.display="flex";
-  };
-
-};
 </script>
 
-  <div id="exitScreen" class="exit-screen" style="display:none;">
-   <h1>👋 You left the room</h1>
-   <h2>Developer: Ayush Verma</h2>
-   <p>Made in Bihar ❤️</p>
+  <div style="text-align:center;margin-top:20px;font-size:14px;color:#555;">
+  Made in Bihar , With 🤍 Ayush Verma
 </div>
-
+ 
 </body>
 </html>
 
