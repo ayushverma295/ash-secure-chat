@@ -35,6 +35,7 @@
   <input id="msg" placeholder="Message">
   <input type="file" id="img">
   <button onclick="send()">Send</button>
+  <button id="exitBtn" class="exit-btn">Exit Room</button>
 </div>
 
 <div id="requests"></div>
@@ -119,6 +120,12 @@
 
   socket.on("errorMsg", alert);
 </script>
+
+  <div id="exitScreen" class="exit-screen" style="display:none;">
+   <h1>👋 You left the room</h1>
+   <h2>Developer: Ayush Verma</h2>
+   <p>Made in Bihar ❤️</p>
+</div>
 
 </body>
 </html>
