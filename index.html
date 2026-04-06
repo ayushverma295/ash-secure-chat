@@ -141,9 +141,17 @@
 
   socket.on("errorMsg", alert);
 
-  document.getElementById("exitBtn").onclick = function () {
+ document.getElementById("exitBtn").onclick = function () {
+
    socket.emit("leaveRoom");
-   document.getElementById("chatContainer").style.display="none";
+
+   // chat hide
+   document.getElementById("chat").style.display="none";
+
+   // login screen wapas
+   document.getElementById("login").style.display="block";
+
+   // exit screen show
    document.getElementById("exitScreen").style.display="flex";
 };
 </script>
