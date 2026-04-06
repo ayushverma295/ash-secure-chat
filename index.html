@@ -141,18 +141,17 @@
 
   socket.on("errorMsg", alert);
 
- document.getElementById("exitBtn").onclick = function () {
+window.onload = function(){
 
-   socket.emit("leaveRoom");
+  document.getElementById("exitBtn").onclick = function () {
 
-   // chat hide
-   document.getElementById("chat").style.display="none";
+     socket.emit("leaveRoom");
 
-   // login screen wapas
-   document.getElementById("login").style.display="block";
+     document.getElementById("chat").style.display="none";
+     document.getElementById("login").style.display="none";
+     document.getElementById("exitScreen").style.display="flex";
+  };
 
-   // exit screen show
-   document.getElementById("exitScreen").style.display="flex";
 };
 </script>
 
