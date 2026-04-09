@@ -69,8 +69,8 @@ img{max-width:100%;border-radius:10px;margin-top:5px}
 <h2>Chat Room</h2>
 
 <div style="display:flex;align-items:center;gap:10px;">
-  <button id="exitBtn" class="exit-btn">Exit</button>
-  <h2 style="margin:0;">Chat Room</h2>
+<button id="exitBtn" class="exit-btn">Exit</button>
+  
 </div>
 
 <div id="onlineUsers"></div>
