@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ash Secure Chat PRO</title>
+<title>Secure Chat PRO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 *{box-sizing:border-box;font-family:Segoe UI,Arial}
@@ -40,7 +40,7 @@ img{max-width:100%;border-radius:10px;margin-top:5px}
 
 <body>
 <div class="card" id="login">
-<h2>Ash Secure Chat PRO</h2>
+<h2>Secure Chat PRO</h2>
 <input id="usernameInput" placeholder="Username">
 <input id="roomInput" placeholder="Room Number">
 <input id="passwordInput" placeholder="Room Password (optional)">
