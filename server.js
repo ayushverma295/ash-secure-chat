@@ -174,7 +174,6 @@ window.onload = function(){
 
 </script>
 
-
 <div id="exitScreen" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#0f172a;color:white;justify-content:center;align-items:center;flex-direction:column;">
   <h1>👋 You left the room</h1>
   <p>Made in Bihar, With 🤍 Ayush Verma</p>
