@@ -50,6 +50,9 @@ img{max-width:100%;border-radius:10px;margin-top:5px}
 
 <div class="card" id="chat">
 <h2>Chat Room</h2>
+<div style="text-align:right;margin-bottom:10px;">
+<button id="exitBtn" style="background:#ff4d4d;">Exit</button>
+</div>
 <div id="onlineUsers"></div>
 <div id="typing"></div>
 <div id="messages"></div>
@@ -131,7 +134,35 @@ function addMsg(user,content,self){
   messages.appendChild(d);
   messages.scrollTop=messages.scrollHeight;
 }
+
+window.onload = function(){
+
+  document.getElementById("exitBtn").onclick = function () {
+
+    // server ko batao leave
+    socket.emit("leaveRoom");
+
+    // chat hide
+    document.getElementById("chat").style.display = "none";
+
+    // login hide
+    document.getElementById("login").style.display = "none";
+
+    // exit screen show
+    document.getElementById("exitScreen").style.display = "flex";
+
+  };
+
+};
+
 </script>
+
+
+<div id="exitScreen" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#0f172a;color:white;justify-content:center;align-items:center;flex-direction:column;">
+  <h1>👋 You left the room</h1>
+  <h2>Developer: Ayush Verma</h2>
+  <p>Made in Bihar , With 🤍 Ayush Verma</p>
+</div>
 
 </body>
 </html>
