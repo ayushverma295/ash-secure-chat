@@ -50,18 +50,19 @@ img{max-width:100%;border-radius:10px;margin-top:5px}
 
 <div class="card" id="chat">
 <h2>Chat Room</h2>
-<div style="text-align:right;margin-bottom:10px;">
-<button id="exitBtn" style="background:#ff4d4d;">Exit</button>
+
+<div style="display:flex;justify-content:space-between;align-items:center;">
+<button id="exitBtn" style="width:35px;height:35px;border-radius:50%;background:#ff4d4d;">Exit</button>
 </div>
+
 <div id="onlineUsers"></div>
 <div id="typing"></div>
 <div id="messages"></div>
+
 <div style="display:flex;gap:5px;align-items:center;">
   <input id="msgInput" placeholder="Message" style="flex:1;padding:10px;border-radius:20px;border:none;">
   
   <button id="sendBtn" style="width:45px;height:45px;border-radius:50%;">➤</button>
-  
-  <button id="exitBtn" style="width:45px;height:45px;border-radius:50%;background:#ff4d4d;">✖</button>
 </div>
 
 <input type="file" id="imgInput">
@@ -69,7 +70,9 @@ img{max-width:100%;border-radius:10px;margin-top:5px}
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
+
 <script>
+
 const socket = io();
 const login=document.getElementById("login");
 const chat=document.getElementById("chat");
@@ -95,6 +98,14 @@ document.getElementById("joinBtn").addEventListener("click",()=>{
 });
 
 document.getElementById("sendBtn").addEventListener("click",sendMsg);
+
+document.getElementById("msgInput").addEventListener("keypress", function(e){
+  if(e.key === "Enter"){
+    e.preventDefault();
+    sendMsg();
+  }
+});
+
 document.getElementById("msgInput").addEventListener("input",()=>socket.emit("typing",{room:roomId,user:userName}));
 
 function sendMsg(){
