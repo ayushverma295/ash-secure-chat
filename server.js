@@ -90,7 +90,6 @@ img{max-width:100%;border-radius:10px;margin-top:5px}
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
-
 const socket = io();
 const login=document.getElementById("login");
 const chat=document.getElementById("chat");
