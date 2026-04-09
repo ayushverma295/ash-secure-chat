@@ -56,9 +56,15 @@ img{max-width:100%;border-radius:10px;margin-top:5px}
 <div id="onlineUsers"></div>
 <div id="typing"></div>
 <div id="messages"></div>
-<input id="msgInput" placeholder="Message">
+<div style="display:flex;gap:5px;align-items:center;">
+  <input id="msgInput" placeholder="Message" style="flex:1;padding:10px;border-radius:20px;border:none;">
+  
+  <button id="sendBtn" style="width:45px;height:45px;border-radius:50%;">➤</button>
+  
+  <button id="exitBtn" style="width:45px;height:45px;border-radius:50%;background:#ff4d4d;">✖</button>
+</div>
+
 <input type="file" id="imgInput">
-<button id="sendBtn">Send</button>
 <div id="requests"></div>
 </div>
 
@@ -160,7 +166,7 @@ window.onload = function(){
 
 <div id="exitScreen" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#0f172a;color:white;justify-content:center;align-items:center;flex-direction:column;">
   <h1>👋 You left the room</h1>
-    <p>Made in Bihar , With 🤍 Ayush Verma</p>
+  <p>Made in Bihar, With 🤍 Ayush Verma</p>
 </div>
 
 </body>
