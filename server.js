@@ -35,6 +35,23 @@ img{max-width:100%;border-radius:10px;margin-top:5px}
   input,button{padding:10px;font-size:14px}
   #messages{height:200px}
 }
+
+.exit-btn{
+  background:#ff4d4d;
+  color:#fff;
+  border:none;
+  padding:6px 12px;
+  border-radius:6px;   /* square look */
+  font-size:12px;
+  cursor:pointer;
+  width:auto;
+  height:auto;
+}
+
+.exit-btn:hover{
+  background:#e60000;
+}
+
 </style>
 </head>
 
@@ -51,8 +68,9 @@ img{max-width:100%;border-radius:10px;margin-top:5px}
 <div class="card" id="chat">
 <h2>Chat Room</h2>
 
-<div style="display:flex;justify-content:space-between;align-items:center;">
-<button id="exitBtn" style="width:35px;height:35px;border-radius:50%;background:#ff4d4d;">✖</button>
+<div style="display:flex;align-items:center;gap:10px;">
+  <button id="exitBtn" class="exit-btn">Exit</button>
+  <h2 style="margin:0;">Chat Room</h2>
 </div>
 
 <div id="onlineUsers"></div>
