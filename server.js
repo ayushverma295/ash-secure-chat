@@ -18,7 +18,8 @@ app.get("/", (req, res) => {
 <script>   
   window.dataLayer = window.dataLayer || [];  
     function gtag(){dataLayer.push(arguments);} 
-    gtag('js', new Date());    gtag('config', 'G-T94R4T0D6W'); </script>
+    gtag('js', new Date());   
+    gtag('config', 'G-T94R4T0D6W'); </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
