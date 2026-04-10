@@ -12,6 +12,14 @@ app.get("/", (req, res) => {
 <head>
 <meta charset="UTF-8">
 <title>Secure Chat PRO</title>
+
+<!-- Google tag (gtag.js) --> 
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T94R4T0D6W"></script>
+<script>   
+  window.dataLayer = window.dataLayer || [];  
+    function gtag(){dataLayer.push(arguments);} 
+    gtag('js', new Date());    gtag('config', 'G-T94R4T0D6W'); </script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 *{box-sizing:border-box;font-family:Segoe UI,Arial}
