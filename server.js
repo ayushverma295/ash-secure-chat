@@ -173,14 +173,11 @@ socket.on("roomClosed",()=>{alert("Admin left. Room closed."); location.reload()
 
 function addMsg(user,content,self){
   const d=document.createElement("div");
-  const time = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-  
   d.className="msg"+(self?"":" other");
-  d.innerHTML=`<b>${user}</b> <small>${time}</small><br>${content}`;
-  
+  d.innerHTML="<b>"+user+"</b><br>"+content;
   messages.appendChild(d);
   messages.scrollTop=messages.scrollHeight;
-}
+  }
 
 window.onload = function(){
 
