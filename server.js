@@ -166,13 +166,16 @@ socket.on("joinRequest",({username,socketId})=>{
 socket.on("message",d=>addMsg(d.user===userName?"You":d.user,d.text,d.user===userName));
 socket.on("image",d=>addMsg(d.user===userName?"You":d.user,"<img src='"+d.image+"'>",d.user===userName));
 socket.on("typing",d=>{typingDiv.textContent=d.user+" is typing..."; setTimeout(()=>{typingDiv.textContent=""},1000)});
-socket.on("updateUsers",users=>{onlineDiv.textContent="Online: "+users.join(", ")});
+socket.on("updateUsers",users=>{onlineDiv.innerHTML ="<b>Online:</b><br>"+users.map(u => "🟢 " + u) .join("<br>"); });
 socket.on("roomClosed",()=>{alert("Admin left. Room closed."); location.reload()});
 
 function addMsg(user,content,self){
   const d=document.createElement("div");
+  const time = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+  
   d.className="msg"+(self?"":" other");
-  d.innerHTML="<b>"+user+"</b><br>"+content;
+  d.innerHTML=`<b>${user}</b> <small>${time}</small><br>${content}`;
+  
   messages.appendChild(d);
   messages.scrollTop=messages.scrollHeight;
 }
